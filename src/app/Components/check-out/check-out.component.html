@@ -1,0 +1,9 @@
+<form [formGroup]="shippingForm" (ngSubmit)="sendPaymentData(shippingForm)" class="py-5 my-5 w-75 mx-auto">
+    <label for="details">Details</label>
+    <input formControlName="details" type="text" class="form-control my-2" id="details">
+    <label for="city">City</label>
+    <input formControlName="city" type="text" class="form-control my-2" id="city">
+    <label for="phone">Phone</label>
+    <input formControlName="phone" type="tel" class="form-control my-2" id="phone">
+    <button class="w-100 btn btn-success my-4 fw-bold">Pay Now <i class="fa-brands fa-cc-visa mx-2 fa-lg"></i></button>
+</form>

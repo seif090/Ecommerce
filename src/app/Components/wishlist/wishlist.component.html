@@ -1,0 +1,33 @@
+<div class="py-4 my-3" *ngIf="checker!= 0; else noData">
+    <div class="row g-2">
+        <div *ngFor="let product of productList" class="col-sm-8 col-md-6 col-lg-4 col-xl-3">
+          <div class="product text-center pt-4 cursor-pointer">
+
+            <!-- remove from favorite -->
+            <i *ngIf="wishlistData.includes(product._id)" (click)="removeFav(product._id)" class="fa-solid fa-heart fa-lg heart" style="color: #df0707;"></i>
+
+            <div [routerLink]="['/productdetails', product._id]">
+              <img [src]="product.imageCover" class="w-100">
+              <p class="text-main pt-1 small">{{product.category.name|uppercase}}</p>
+              <h6 class="small">{{product.title.split(" ").slice(0,2).join(" ")}}</h6>
+              <div class="d-flex justify-content-around small pt-1">
+                  <span>{{product.price|currency: "EGP "}}</span>
+                  <span>
+                      <i class="fa-solid fa-star rating-color"></i>
+                      <span class="text-muted mx-1">{{product.ratingsAverage}}</span>
+                  </span>
+              </div>
+          </div>
+          <button (click)="addToCart(product._id, addBtn)" #addBtn class="btn btn-success my-2"><i class="fa-solid fa-plus fa-xs mx-1" style="color: #ffffff;"></i>Add To Cart</button>
+          </div> 
+        </div>
+    </div>
+</div>
+
+<ng-template #noData>
+  <div class="alert alert-danger text-center py-5 fs-4 my-5">Your WishList Is Empity</div>
+</ng-template>
+
+  <div class="loading position-fixed top-0 end-0 start-0 bottom-0">
+    <span class="loader"></span>
+  </div>

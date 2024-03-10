@@ -1,0 +1,28 @@
+.sml{
+    font-size: 12px;
+}
+input::placeholder{
+    font-size: 8px;
+}
+.btn{
+    font-size: 7px;
+    color: white;
+}
+.line{
+    width: 90%;
+    height: 0.1px;
+    background-color: rgb(227, 225, 225);
+}
+.xsml{
+    font-size: 0.1px;
+    color: rgb(227, 225, 225);
+}
+.storeText{
+    font-size: 7px;
+}
+.payment{
+    width:40%;
+}
+.deliveries{
+    width: 60%;
+}

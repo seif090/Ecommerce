@@ -1,0 +1,32 @@
+<div class="bg-light p-5" *ngIf="cartData!= null; else noData" >
+    <button (click)="clearCart()" class="btn btn-sm btn-danger d-block ms-auto">Clear Form</button>
+    <div *ngFor="let item of cartData.data.products" class="row border-bottom border-3 my-3 justify-content-between">
+        <div class="col-md-6">
+            <div class="row align-items-center">
+                <div class="col-md-3 mb-3">
+                    <img [src]="item.product.imageCover" alt="" class="w-100">
+                </div>
+                <div class="col-md-9">
+                    <h5>{{item.product.title |uppercase}}</h5>
+                    <p>{{item.price| currency:"EGP "}}</p>
+                    <button (click)="deleteProduct(item.product._id)" class="btn btn-outline-danger"><i class="fa-solid fa-trash-can text-danger fa-lg mx-2"></i>Remove</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 d-flex align-items-center">
+                <span (click)="updateQuantity(item.product._id, item.count+1)" class="btn btn-success fs-5 fw-bold">+</span>
+                <span class="mx-2 fs-5">{{item.count}}</span>
+                <span (click)="updateQuantity(item.product._id, item.count-1)"  class="btn btn-danger fs-5 fw-bold">-</span>
+        </div>
+    </div>
+    <h2 class="text-main fw-bold fs-4"> Total Price: {{cartData.data.totalCartPrice| currency:"EGP "}}</h2>
+    <button [routerLink]="['/checkout', cartData.data._id]" class="btn btn-success w-25 d-block mx-auto my-3 fw-bold">CheckOut</button>
+</div>
+
+<ng-template #noData>
+    <div class="alert alert-danger text-center py-5 fs-4 my-5">Cart Is Empity</div>
+</ng-template>
+
+<div class="loading position-fixed top-0 end-0 start-0 bottom-0">
+    <span class="loader"></span>
+  </div>
